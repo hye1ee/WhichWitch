@@ -49,7 +49,7 @@ const ButtonElement = styled.div`
   cursor: pointer;
 
   &:hover {
-    box-shadow: inset 0 0 5px #f8a100;
+    box-shadow: inset 0 0 10px 0 rgb(200, 200, 200);
   }
 
   background-color: ${(props) => (props.selected ? "black" : "white")};
