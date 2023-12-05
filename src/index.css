@@ -38,6 +38,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  line-height: 1.6;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
