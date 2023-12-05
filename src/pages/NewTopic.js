@@ -40,18 +40,21 @@ const data = {
       data: [100, -100, 200, 400, 600, 100 - 2324],
       borderColor: color.blue.border,
       backgroundColor: color.blue.background,
+      tension: 0.3,
     },
     {
       label: "2022",
       data: [100, 300, 600, -300, 100, 200, 456],
       borderColor: color.purple.border,
       backgroundColor: color.purple.background,
+      tension: 0.3,
     },
     {
       label: "2023",
       data: [100, 324, 234, -3, 100, 2030, 456],
       borderColor: color.yellow.border,
       backgroundColor: color.yellow.background,
+      tension: 0.3,
     },
   ],
 };
