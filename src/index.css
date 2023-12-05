@@ -1,17 +1,52 @@
-#root,
-html {
+@font-face {
+  font-family: "Leferi-White";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Leferi-Special";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-SpecialA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gord";
+  src: url("/public/gordqucik.otf") format("truetype");
+}
+@font-face {
+  font-family: "Blogh";
+  src: url("/public/blogh.otf") format("truetype");
+}
+
+#root {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  height: fit-content;
+
+  font-family: "Leferi-White";
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  white-space: pre-wrap;
 }
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  /* display: none; */
+}
+.scroll {
+  /* -ms-overflow-style: none; */
+  /* scrollbar-width: none; */
 }
