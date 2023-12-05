@@ -21,12 +21,12 @@ const LayoutWrapper = styled.div`
   height: fit-content;
 
   box-sizing: border-box;
-  padding: 150px 0px;
+  padding: 250px 0px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 60px;
 
   background-color: ${(props) => (props.black === true ? "black" : "white")};
   color: ${(props) => (props.black === true ? "white" : "black")};

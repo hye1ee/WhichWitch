@@ -32,8 +32,21 @@ const options = {
     legend: {
       position: "bottom",
     },
+    // title: {
+    //   display: true,
+    //   text: "월 별 검색 관심도",
+    // },
+  },
+  scales: {
+    y: {
+      title: {
+        display: true,
+        text: "검색 관심도 ( 상대값 )",
+      },
+    },
   },
 };
+
 const data = {
   labels,
   datasets: [
@@ -62,7 +75,14 @@ const data = {
 };
 const NewTopic = () => {
   const items = ["수영🏊‍♀️", "헬스 용품🔩", "현미밥🍚", "근육💪"];
+  const oldItems = [
+    "다이어트 도시락🍱",
+    "다이어트 보조제💊",
+    "곤약면🍜",
+    "홈트레이닝🏠",
+  ];
   const [item, setItem] = useState(0);
+  const [oldItem, setOldItem] = useState(0);
 
   return (
     <Layout
@@ -86,6 +106,31 @@ const NewTopic = () => {
           <div>{"키워드를 클릭하여 최근 3년간의 동향을 파악해보세요!"}</div>
         </TextWrapper>
         <Line options={options} data={data} />
+        <DescriptionWrapper>
+          {
+            "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
+          }
+        </DescriptionWrapper>
+      </LineWrapper>
+
+      <LineWrapper>
+        <TextWrapper>
+          {" "}
+          <div>{"다음 분기부터는 작별을 고할??? 키워드들도 있어요"}</div>
+          <Items
+            items={oldItems}
+            selected={oldItem}
+            selectedHandler={(el) => setOldItem(el)}
+            text={"이에요."}
+          />
+          <div>{"키워드를 클릭하여 최근 3년간의 동향을 파악해보세요!"}</div>
+        </TextWrapper>
+        <Line options={options} data={data} />
+        <DescriptionWrapper>
+          {
+            "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
+          }
+        </DescriptionWrapper>
       </LineWrapper>
     </Layout>
   );
@@ -98,12 +143,18 @@ const LineWrapper = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  margin: 30px 0px;
+  margin: 50px 0px;
 `;
 const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
+`;
+const DescriptionWrapper = styled.div`
+  width: 80%;
+  text-align: left;
+  white-space: normal;
 `;
