@@ -52,6 +52,11 @@ const Stream = () => {
     >
       <RadarWrapepr>
         <Radar data={data} options={{ responsive: true }} />
+        <DescriptionWrapper>
+          {
+            "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
+          }
+        </DescriptionWrapper>
       </RadarWrapepr>
     </Layout>
   );
@@ -60,4 +65,9 @@ export default Stream;
 const RadarWrapepr = styled.div`
   width: 50%;
   max-width: 1000px;
+`;
+const DescriptionWrapper = styled.div`
+  width: 80%;
+  text-align: left;
+  white-space: normal;
 `;
