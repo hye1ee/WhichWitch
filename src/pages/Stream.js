@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Radar } from "react-chartjs-2";
 import { color } from "../components/style";
+import { radarData } from "../assets/genderData";
 
 ChartJS.register(
   RadialLinearScale,
@@ -22,18 +23,18 @@ ChartJS.register(
   Legend
 );
 const data = {
-  labels: ["1", "2", "3", "4", "5", "6"],
+  labels: radarData.contents,
   datasets: [
     {
       label: "여자",
-      data: [2, 9, 3, 5, 2, 3],
+      data: radarData.female_data,
       backgroundColor: color.purple.background,
       borderColor: color.purple.border,
       borderWidth: 1,
     },
     {
       label: "남자",
-      data: [2, 3, 4, 5, 6, 2],
+      data: radarData.male_data,
       backgroundColor: color.yellow.background,
       borderColor: color.yellow.border,
       borderWidth: 1,
@@ -57,6 +58,6 @@ const Stream = () => {
 };
 export default Stream;
 const RadarWrapepr = styled.div`
-  width: 60%;
+  width: 50%;
   max-width: 1000px;
 `;
