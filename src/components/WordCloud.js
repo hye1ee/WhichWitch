@@ -23,6 +23,7 @@ const colors = [
 const fontOptions = {
   // fontFamily: "LeferiPointWhite.ttf", // 폰트 실제경로로 변경해 주시면 됩니다
   fontWeight: 700,
+  fontSizes: [15, 140],
 };
 
 const getRandomColor = () => {
