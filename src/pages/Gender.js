@@ -15,7 +15,6 @@ const Gender = () => {
       icon="comet"
       description={"각 성별은 이번 분기에 어떤 키워드를 검색할까요?"}
     >
-      Hello
       <Button
         items={["남자", "여자"]}
         selectedItem={female ? "여자" : "남자"}

@@ -11,73 +11,66 @@ import WorkGrayImg from "../assets/work_icon_gray.png";
 import Plot from "react-plotly.js";
 import Button from "../components/Button";
 import { color } from "../components/style";
+import { violinData } from "../assets/keywordData";
 
-const data = [
-  {
-    x: [
-      14, 12, 11, 15, 10, 11, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13,
-      14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 14, 13, 10, 15, 13, 12,
-      14, 12, 11, 13, 15, 10, 15,
-    ],
-    type: "violin",
-    name: "Keyword 0",
-    box: {
-      visible: false,
+const data = (dataKeys) => {
+  const result = [
+    {
+      x: violinData[dataKeys[0]],
+      type: "violin",
+      name: dataKeys[0],
+      box: {
+        visible: false,
+      },
+      line: {
+        color: color.redPurple.border,
+      },
+      fillcolor: color.redPurple.background,
     },
-    line: {
-      color: color.redPurple.border,
+    {
+      x: violinData[dataKeys[1]],
+      type: "violin",
+      name: dataKeys[1],
+      box: {
+        visible: false,
+      },
+      line: {
+        color: color.purple.border,
+      },
+      fillcolor: color.purple.background,
     },
-    fillcolor: color.redPurple.background,
-  },
-  {
-    x: [
-      12, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10, 11, 10,
-      11, 10, 11, 14, 13, 15, 11, 14, 13, 12, 10, 14, 15, 13, 12, 11, 15, 14,
-      10, 13, 12, 11, 15,
-    ],
-    type: "violin",
-    name: "Keyword 1",
-    box: {
-      visible: false,
-    },
-    line: {
-      color: color.purple.border,
-    },
-    fillcolor: color.purple.background,
-  },
 
-  {
-    x: [
-      14, 13, 12, 10, 11, 15, 14, 15, 12, 11, 13, 14, 10, 15, 11, 12, 10, 15,
-      11, 12, 10, 15, 11, 12, 10, 15, 11, 12, 10, 15, 11, 12, 10, 15, 11, 12,
-      10, 15, 11, 12, 10, 15, 13, 11,
-    ],
-    type: "violin",
-    name: "Keyword 2",
-    box: {
-      visible: false,
+    {
+      x: violinData[dataKeys[2]],
+      type: "violin",
+      name: dataKeys[2],
+      box: {
+        visible: false,
+      },
+      line: {
+        color: color.blue.border,
+      },
+      fillcolor: color.blue.background,
     },
-    line: {
-      color: color.blue.border,
-    },
-    fillcolor: color.blue.background,
-  },
-  {
-    x: [
-      12, 15, 14, 13, 10, 11, 14, 13, 12, 11, 10, 15, 14, 15, 13, 11, 10, 15,
-      12, 13, 11, 14, 12, 13,
-    ],
-    type: "violin",
-    name: "Keyword 3",
-    box: {
-      visible: false,
-    },
-    line: {
-      color: color.lightBlue.border,
-    },
-    fillcolor: color.lightBlue.background,
-  },
-];
+  ];
+
+  if (dataKeys.length > 3) {
+    result.push({
+      x: violinData[dataKeys[3]],
+      type: "violin",
+      name: dataKeys[3],
+      box: {
+        visible: false,
+      },
+      line: {
+        color: color.lightBlue.border,
+      },
+      fillcolor: color.lightBlue.background,
+    });
+  }
+
+  return result;
+};
 
 const layout = {
   // title: "Violin Plot of Keywords Over Time",
@@ -120,7 +113,11 @@ const Trends = () => {
           }}
         />
         <Plot
-          data={data}
+          data={data(
+            diet
+              ? ["단백질", "샐러드", "제로 음료"]
+              : ["운동복", "웨이트", "체성분", "런닝"]
+          )}
           layout={layout}
           config={{ displayModeBar: false, staticPlot: false }}
         />

@@ -14,6 +14,7 @@ import { Line } from "react-chartjs-2";
 import { color } from "../components/style";
 import { useState } from "react";
 import Items from "../components/Items";
+import { lineData } from "../assets/keywordData";
 
 ChartJS.register(
   CategoryScale,
@@ -24,7 +25,20 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-const labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월"];
+const labels = [
+  "1월",
+  "2월",
+  "3월",
+  "4월",
+  "5월",
+  "6월",
+  "7월",
+  "8월",
+  "9월",
+  "10월",
+  "11월",
+  "12월",
+];
 
 const options = {
   responsive: true,
@@ -47,34 +61,36 @@ const options = {
   },
 };
 
-const data = {
-  labels,
-  datasets: [
-    {
-      label: "2021",
-      data: [100, -100, 200, 400, 600, 100 - 2324],
-      borderColor: color.blue.border,
-      backgroundColor: color.blue.background,
-      tension: 0.3,
-    },
-    {
-      label: "2022",
-      data: [100, 300, 600, -300, 100, 200, 456],
-      borderColor: color.purple.border,
-      backgroundColor: color.purple.background,
-      tension: 0.3,
-    },
-    {
-      label: "2023",
-      data: [100, 324, 234, -3, 100, 2030, 456],
-      borderColor: color.yellow.border,
-      backgroundColor: color.yellow.background,
-      tension: 0.3,
-    },
-  ],
+const data = (data) => {
+  return {
+    labels,
+    datasets: [
+      {
+        label: "2021",
+        data: data[2021],
+        borderColor: color.blue.border,
+        backgroundColor: color.blue.background,
+        tension: 0.3,
+      },
+      {
+        label: "2022",
+        data: data[2022],
+        borderColor: color.purple.border,
+        backgroundColor: color.purple.background,
+        tension: 0.3,
+      },
+      {
+        label: "2023",
+        data: data[2023],
+        borderColor: color.yellow.border,
+        backgroundColor: color.yellow.background,
+        tension: 0.3,
+      },
+    ],
+  };
 };
 const NewTopic = () => {
-  const items = ["수영🏊‍♀️", "헬스 용품🔩", "현미밥🍚", "근육💪"];
+  const items = ["헬스 용품🔩", "수영🏊‍♀️", "근육💪", "현미밥🍚"];
   const oldItems = [
     "다이어트 도시락🍱",
     "다이어트 보조제💊",
@@ -105,7 +121,10 @@ const NewTopic = () => {
           />
           <div>{"키워드를 클릭하여 최근 3년간의 동향을 파악해보세요!"}</div>
         </TextWrapper>
-        <Line options={options} data={data} />
+        <Line
+          options={options}
+          data={data(Object.values(lineData.new)[item])}
+        />
         <DescriptionWrapper>
           {
             "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
@@ -125,7 +144,7 @@ const NewTopic = () => {
           />
           <div>{"키워드를 클릭하여 최근 3년간의 동향을 파악해보세요!"}</div>
         </TextWrapper>
-        <Line options={options} data={data} />
+        {/* <Line options={options} data={data} /> */}
         <DescriptionWrapper>
           {
             "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
