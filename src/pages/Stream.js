@@ -44,7 +44,7 @@ const data = {
 const Stream = () => {
   return (
     <Layout
-      title="남녀의 방향성도 두들겨봐요"
+      title="키워드 방향성 비교"
       icon="wand"
       description={
         "각자 다른 특성을 가지고 있는 키워드들을 모아봤어요.\n남자와 여자가 가지고 있는 방향성을 비교해보아요."
