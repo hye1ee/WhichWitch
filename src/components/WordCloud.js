@@ -59,8 +59,12 @@ const WorldCloudGender = (props) => {
   };
 
   return (
-    <div style={{ width: "1130px", height: "568px" }}>
-      <WordCloud words={words} options={options} />
+    <div>
+      <img src="../../assets/wordcloud_male.png" alt="Male Word Cloud" />
+      <img src="../../assets/wordcloud_female.png" alt="Female Word Cloud" />
+      <div style={{ width: "1130px", height: "568px" }}>
+        <WordCloud words={words} options={options} />
+      </div>
     </div>
   );
 };
