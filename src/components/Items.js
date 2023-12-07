@@ -16,6 +16,7 @@ const Items = (props) => {
           item={el}
           selected={props.selected === idx}
           onClick={() => props.selectedHandler(idx)}
+          light={props.light}
         />
       ))}
       <div>{props.text}</div>
@@ -67,6 +68,7 @@ export const Item = (props) => {
       onPointerLeave={stopHover}
       onClick={props.onClick}
       selected={props.selected}
+      light={props.light}
     >
       {props.item}
     </ItemWrapper>
@@ -77,7 +79,12 @@ const ItemWrapper = styled(motion.div)`
   box-sizing: border-box;
   padding: 0px 7px;
 
-  background-color: ${(props) => (props.selected ? "#A24DFF" : "none")};
+  background-color: ${(props) =>
+    props.selected
+      ? props.light === true
+        ? "rgba(173, 216, 230)"
+        : "#A24DFF"
+      : "none"};
 
   cursor: pointer;
   font-size: 19px;

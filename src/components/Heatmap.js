@@ -68,10 +68,16 @@ const Heatmap = (props) => {
 
   return (
     <HeatmapWrapper large={props.selected}>
-      <HeatmapTitle onClick={() => props.selectedHandler(props.keyword)}>
-        {props.keyword}
-      </HeatmapTitle>
+      <HeatmapTitleWrapper>
+        <HeatmapLine />
+        <HeatmapTitle onClick={() => props.selectedHandler(props.keyword)}>
+          {props.keyword}
+        </HeatmapTitle>
+        <HeatmapLine />
+      </HeatmapTitleWrapper>
+
       <div id={"heatmap-" + props.idx}></div>
+      {props.selected && <div>{props.description}</div>}
     </HeatmapWrapper>
   );
 };
@@ -88,9 +94,31 @@ const HeatmapWrapper = styled.div`
   align-items: center;
   gap: 20px;
 `;
+const HeatmapTitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+const HeatmapLine = styled.div`
+  flex: 1;
+  border: 0.5px solid black;
+`;
 
 const HeatmapTitle = styled.div`
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: black;
   cursor: pointer;
+
+  font-family: "Leferi-Special";
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 3px 6px;
+
+  &:hover {
+    opacity: 50%;
+  }
+
+  transition: all 0.3s;
 `;

@@ -1,7 +1,5 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import WordCloud from "react-wordcloud";
-
-// 여자 워드클라우드 데이터
 
 const colors = [
   "#f3eeff",
@@ -26,25 +24,45 @@ const fontOptions = {
   fontSizes: [15, 140],
 };
 
-const getRandomColor = () => {
-  return colors[Math.floor(Math.random() * colors.length)];
-};
+const getColorForValue = (value, minValue, maxValue) => {
+  const startColor = [208, 255, 138];
+  const endColor = [138, 93, 254];
 
-const getRandomColorWords = (data) => {
-  return data.map((word) => {
-    return { ...word, color: getRandomColor() };
+  const normalizedValue = (value - minValue) / (maxValue - minValue);
+
+  const interpolatedColor = startColor.map((start, index) => {
+    const end = endColor[index];
+    const delta = end - start;
+    return Math.round(start + delta * normalizedValue);
   });
+
+  return `rgb(${interpolatedColor.join(",")})`;
 };
 
-// 화면 비율은 바꾸지 말아주세요 (사이즈는 변경하셔도 됩니다)
-// 디폴트로 여성의 워드클라우드를 먼저 그리게 만들어 두었습니다
-const WordCloudGender = (props) => {
-  const randomColorWords = getRandomColorWords(props.data);
+const WorldCloudGender = (props) => {
+  const values = props.data.map((word) => word.value);
+  const minValue = Math.min(...values);
+  const maxValue = Math.max(...values);
+
+  const words = props.data.map((word) => ({
+    ...word,
+    color: getColorForValue(word.value, minValue, maxValue),
+  }));
+  const options = {
+    rotations: 4,
+    rotationAngles: [0, 90],
+    scale: "sqrt",
+    spiral: "rectangular",
+    enableTooltip: false,
+    deterministic: true,
+    fontSizes: [10, 60],
+  };
+
   return (
     <div style={{ width: "1130px", height: "568px" }}>
-      <WordCloud words={randomColorWords} options={fontOptions} />
+      <WordCloud words={words} options={options} />
     </div>
   );
 };
 
-export default WordCloudGender;
+export default WorldCloudGender;
