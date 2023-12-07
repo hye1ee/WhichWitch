@@ -2,99 +2,98 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import { useState } from "react";
 
-import DietColorImg from "../assets/diet_icon_color.png";
-import DietGrayImg from "../assets/diet_icon_gray.png";
-
-import WorkColorImg from "../assets/work_icon_color.png";
-import WorkGrayImg from "../assets/work_icon_gray.png";
-
-import Plot from "react-plotly.js";
 import Button from "../components/Button";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import { keywordData } from "../assets/keywordData";
 import { color } from "../components/style";
-import { violinData } from "../assets/keywordData";
 
-const data = (dataKeys) => {
-  const result = [
-    {
-      x: violinData[dataKeys[0]],
-      type: "violin",
-      name: dataKeys[0],
-      box: {
-        visible: false,
-      },
-      line: {
-        color: color.redPurple.border,
-      },
-      fillcolor: color.redPurple.background,
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
     },
-    {
-      x: violinData[dataKeys[1]],
-      type: "violin",
-      name: dataKeys[1],
-      box: {
-        visible: false,
+  },
+  scales: {
+    y: {
+      title: {
+        display: true,
+        text: "검색 관심도 ( 상대값 )",
       },
-      line: {
-        color: color.purple.border,
-      },
-      fillcolor: color.purple.background,
     },
-
-    {
-      x: violinData[dataKeys[2]],
-      type: "violin",
-      name: dataKeys[2],
-      box: {
-        visible: false,
-      },
-      line: {
-        color: color.blue.border,
-      },
-      fillcolor: color.blue.background,
-    },
-  ];
-
-  if (dataKeys.length > 3) {
-    result.push({
-      x: violinData[dataKeys[3]],
-      type: "violin",
-      name: dataKeys[3],
-      box: {
-        visible: false,
-      },
-      line: {
-        color: color.lightBlue.border,
-      },
-      fillcolor: color.lightBlue.background,
-    });
-  }
-
-  return result;
+  },
 };
 
-const layout = {
-  // title: "Violin Plot of Keywords Over Time",
-  width: 800,
-  autosize: true,
-  margin: {
-    b: 25,
-    t: 0,
-    pad: 0,
-  },
-  xaxis: {
-    showticklabels: true,
-    tickmode: "array",
-    tickvals: [10, 11, 12, 13, 14, 15],
-    ticktext: ["10월", "11월", "12월", "1월", "2월", "3월"],
-    zeroline: false,
-  },
-  violingap: 0,
-  hovermode: true,
-  showlegend: false,
+const data = (diet) => {
+  const category = diet ? "식단" : "운동";
+  const dataSet = Object.values(keywordData[category]);
+  const labelSet = Object.keys(keywordData[category]);
+  const fill = false;
+
+  return {
+    labels: ["10월", "11월", "12월", "1월", "2월", "3월"],
+    datasets: [
+      {
+        fill,
+        label: labelSet[0],
+        data: dataSet[0],
+        borderColor: color.blue.border,
+        backgroundColor: color.blue.background,
+      },
+      {
+        fill,
+        label: labelSet[1],
+        data: dataSet[1],
+        borderColor: color.yellow.border,
+        backgroundColor: color.yellow.background,
+      },
+      {
+        fill,
+        label: labelSet[2],
+        data: dataSet[2],
+        borderColor: color.orange.border,
+        backgroundColor: color.orange.background,
+      },
+      {
+        fill,
+        label: labelSet[3],
+        data: dataSet[3],
+        borderColor: color.purple.border,
+        backgroundColor: color.purple.background,
+      },
+      {
+        fill,
+        label: labelSet[4],
+        data: dataSet[4],
+        borderColor: color.redPurple.border,
+        backgroundColor: color.redPurple.background,
+      },
+    ],
+  };
 };
 
 const Trends = () => {
-  const [diet, onDiet] = useState(true);
+  const [diet, onDiet] = useState(false);
 
   return (
     <Layout
@@ -112,15 +111,7 @@ const Trends = () => {
             onDiet(el === "식단");
           }}
         />
-        <Plot
-          data={data(
-            diet
-              ? ["단백질", "샐러드", "제로 음료"]
-              : ["운동복", "웨이트", "체성분", "런닝"]
-          )}
-          layout={layout}
-          config={{ displayModeBar: false, staticPlot: false }}
-        />
+        <Line options={options} data={data(diet)} />
         <DescriptionWrapper>
           {
             "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"

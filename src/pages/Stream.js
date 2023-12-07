@@ -65,6 +65,9 @@ export default Stream;
 const RadarWrapepr = styled.div`
   width: 50%;
   max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const DescriptionWrapper = styled.div`
   width: 80%;

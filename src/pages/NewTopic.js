@@ -126,16 +126,14 @@ const NewTopic = () => {
           data={data(Object.values(lineData.new)[item])}
         />
         <DescriptionWrapper>
-          {
-            "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
-          }
+          {Object.values(lineData.new)[item].description}
         </DescriptionWrapper>
       </LineWrapper>
 
       <LineWrapper>
         <TextWrapper>
           {" "}
-          <div>{"다음 분기부터는 작별을 고할??? 키워드들도 있어요"}</div>
+          <div>{"다음 분기부터는 작별을 고할 키워드들도 있어요"}</div>
           <Items
             items={oldItems}
             selected={oldItem}
@@ -144,11 +142,12 @@ const NewTopic = () => {
           />
           <div>{"키워드를 클릭하여 최근 3년간의 동향을 파악해보세요!"}</div>
         </TextWrapper>
-        {/* <Line options={options} data={data} /> */}
+        <Line
+          options={options}
+          data={data(Object.values(lineData.old)[oldItem])}
+        />
         <DescriptionWrapper>
-          {
-            "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
-          }
+          {Object.values(lineData.old)[oldItem].description}
         </DescriptionWrapper>
       </LineWrapper>
     </Layout>
