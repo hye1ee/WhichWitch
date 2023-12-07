@@ -49,7 +49,7 @@ const WorldCloudGender = (props) => {
     color: getColorForValue(word.value, minValue, maxValue),
   }));
   const options = {
-    rotations: 4,
+    rotations: 0,
     rotationAngles: [0, 90],
     scale: "sqrt",
     spiral: "rectangular",
