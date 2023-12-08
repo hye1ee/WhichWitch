@@ -175,4 +175,7 @@ const DescriptionWrapper = styled.div`
   width: 80%;
   text-align: left;
   white-space: normal;
+  @media screen and (max-width: 800px) {
+    width: 90%;
+  }
 `;

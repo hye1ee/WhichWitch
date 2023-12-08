@@ -29,9 +29,15 @@
 
   font-family: "Leferi-White";
   font-size: 16px;
+
   color: black;
   text-align: center;
   white-space: pre-wrap;
+  word-break: keep-all;
+
+  @media screen and (max-width: 800px) {
+    font-size: 12px;
+  }
 }
 
 body {

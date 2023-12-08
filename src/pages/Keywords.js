@@ -64,7 +64,12 @@ const CalendarWrapper = styled.div`
 
 const CalendarContainer = styled.div`
   width: 980px;
+  max-width: 90%;
   height: fit-content;
+
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+  }
 
   display: flex;
   flex-direction: row;

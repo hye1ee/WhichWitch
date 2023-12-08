@@ -36,6 +36,12 @@ const ButtonElement = styled.div`
   width: 80px;
   height: 36px;
 
+  @media screen and (max-width: 800px) {
+    width: 70px;
+    height: 28px;
+    font-size: 12px;
+  }
+
   font-size: 13px;
   font-weight: 600;
 

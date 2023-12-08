@@ -113,9 +113,7 @@ const Trends = () => {
         />
         <Line options={options} data={data(diet)} />
         <DescriptionWrapper>
-          {
-            "설명을 적어주세요. 설명을 적어주세요. 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 .설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요 설명을 적어주세요설명을 적어주세요설명을 적어주세요"
-          }
+          {keywordData[diet ? "식단" : "운동"].description}
         </DescriptionWrapper>
       </PlotWrapper>
     </Layout>
@@ -135,6 +133,9 @@ const PlotWrapper = styled.div`
 `;
 const DescriptionWrapper = styled.div`
   width: 80%;
+  @media screen and (max-width: 800px) {
+    width: 90%;
+  }
   text-align: left;
   white-space: normal;
 `;

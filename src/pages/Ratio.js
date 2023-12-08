@@ -11,7 +11,7 @@ import Items from "../components/Items";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Ratio = () => {
-  const items = ["헬스용품🏋‍♂️", "런닝🏃‍♂️", "닭가슴살🐔", "샐러드🥗"];
+  const items = ["헬스용품🏋‍♂️", "수영🏊", "근육💪", "건강식🥗"];
   const [focus, setFocus] = useState(false);
   const [keyword, setKeyword] = useState(0);
 
@@ -87,13 +87,14 @@ export default Ratio;
 
 const TextWrapper = styled.div`
   display: flex;
+  max-width: 90%;
   flex-direction: column;
   align-items: center;
   gap: 2px;
 `;
 const PieWrapper = styled.div`
   width: 600px;
-
+  max-width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,6 +105,9 @@ const DescriptionWrapper = styled.div`
   width: 80%;
   text-align: left;
   white-space: normal;
+  @media screen and (max-width: 800px) {
+    width: 90%;
+  }
 `;
 const PieContentsWrapper = styled.div`
   margin-right: 80px;

@@ -83,14 +83,13 @@ const Gender = () => {
       icon="comet"
       description={"각 성별은 이번 분기에 어떤 키워드를 검색할까요?"}
     >
-      <Button
-        items={["남자", "여자"]}
-        selectedItem={female ? "여자" : "남자"}
-        selectedHandler={(el) => setFemale(el === "여자")}
-      />
-      <WordCloudGender data={genderData[female ? "female" : "male"]} />
-
       <ChartWrapper>
+        <Button
+          items={["남자", "여자"]}
+          selectedItem={female ? "여자" : "남자"}
+          selectedHandler={(el) => setFemale(el === "여자")}
+        />
+        <WordCloudGender female={female} />
         <Bar options={options} data={data(female)} />
         <GenderTitleWrapper>
           {Object.keys(female ? femaleData : maleData).map((el, idx) => (
@@ -115,9 +114,11 @@ export default Gender;
 
 const GenderTitleWrapper = styled.div`
   width: fit-content;
+  max-width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 `;
 const GenderLine = styled.div`
   flex: 1;
@@ -127,13 +128,14 @@ const GenderLine = styled.div`
 
 const ChartWrapper = styled.div`
   width: 500px;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 
-  position: relative;
-  bottom: 150px;
+  /* position: relative;
+  bottom: 150px; */
 `;
 
 const GenderTitle = styled.div`
@@ -146,6 +148,7 @@ const GenderTitle = styled.div`
   border: 1px solid black;
   border-radius: 5px;
   padding: 3px 8px;
+  white-space: nowrap;
 
   &:hover {
     opacity: 50%;

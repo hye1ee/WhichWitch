@@ -71,19 +71,26 @@
 
 // export default WorldCloudGender;
 
-
 import React from "react";
+import styled from "styled-components";
+import MaleImg from "../assets/wordcloud_male.png";
+import FemaleImg from "../assets/wordcloud_female.png";
 
-const WorldCloudGender = () => {
+const WorldCloudGender = (props) => {
   return (
     <div>
-      <img src="../../assets/wordcloud_male.png" alt="Male Word Cloud" />
-      <img src="../../assets/wordcloud_female.png" alt="Female Word Cloud" />
-        <div style={{ width: "1130px", height: "568px" }}>
-          <WordCloud words={words} options={options} />
-        </div>
+      {props.female ? (
+        <ImgWrapper src={FemaleImg} alt="Female Word Cloud" />
+      ) : (
+        <ImgWrapper src={MaleImg} alt="Male Word Cloud" />
+      )}
     </div>
   );
 };
 
 export default WorldCloudGender;
+
+const ImgWrapper = styled.img`
+  width: 800px;
+  max-width: 100%;
+`;

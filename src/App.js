@@ -61,4 +61,5 @@ const AppWrapper = styled.div`
   position: relative;
   gap: 50px;
   overflow: auto;
+  overflow-x: hidden;
 `;

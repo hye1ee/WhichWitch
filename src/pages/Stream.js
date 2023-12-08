@@ -60,7 +60,7 @@ const Stream = () => {
 export default Stream;
 const RadarWrapepr = styled.div`
   width: 750px;
-  max-width: 1000px;
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,4 +69,7 @@ const DescriptionWrapper = styled.div`
   width: 90%;
   text-align: left;
   white-space: normal;
+  @media screen and (max-width: 800px) {
+    width: 90%;
+  }
 `;

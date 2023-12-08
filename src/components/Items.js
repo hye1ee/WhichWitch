@@ -34,6 +34,7 @@ const ItemsWrapper = styled.div`
 
   align-items: flex-end;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const variants = {
@@ -88,6 +89,9 @@ const ItemWrapper = styled(motion.div)`
 
   cursor: pointer;
   font-size: 19px;
+  @media screen and (max-width: 800px) {
+    font-size: 16px;
+  }
   /* text-decoration: underline 1px; */
   font-weight: 600;
 
@@ -96,4 +100,5 @@ const ItemWrapper = styled(motion.div)`
     /* text-decoration: underline wavy 1px; */
     opacity: 50%;
   }
+  white-space: nowrap;
 `;
